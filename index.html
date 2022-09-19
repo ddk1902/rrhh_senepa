@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta charset="UTF-8">
+	<title>Registro de datos de funcionarios del SENEPA</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" href="css/estilos.css">
+	<!-- Buttons DataTables -->
+	<link rel="stylesheet" href="css/buttons.bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="icon" href="senepa.ico" type="image/ico">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var maxField = 10; //Input fields increment limitation
+			var addButton = $('.add_button'); //Add button selector
+			var wrapper = $('.field_wrapper'); //Input field wrapper
+			var fieldHTML = '<div><input type="text" name="field_name[]" value=""/><a href="javascript:void(0);" class="remove_button" title="Remove field"><img src="remove-icon.png"/></a></div>'; //New input field html 
+			var x = 1; //Initial field counter is 1
+			$(addButton).click(function(){ //Once add button is clicked
+				if(x < maxField){ //Check maximum number of input fields
+					x++; //Increment field counter
+					$(wrapper).append(fieldHTML); // Add field html
+				}
+			});
+			$(wrapper).on('click', '.remove_button', function(e){ //Once remove button is clicked
+				e.preventDefault();
+				$(this).parent('div').remove(); //Remove field html
+				x--; //Decrement field counter
+			});
+		});
+		</script>
+</br></br></br>
+    
+		<center>
+			<img src="SENEPA.png"></img>
+			<h4 class= "text-center text-uppercase">Registro de datos de funcionarios del SENEPA</h4>
+				</center>
+			
+					<h2 id="HoraActual"></h2>
+					
+<!-- 	<div class="row fondo">
+	    
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<h4 class= "text-center text-uppercase">Registro de datos de funcionarios del SENEPA</h4>
+		</div>
+	</div> -->
+	<div class="row">
+		<div id="cuadro2" class="col-sm-12 col-md-12 col-lg-12 ocultar">
+			<form class="form-horizontal" action="" method="POST">
+			</br>
+				<div class="form-group">
+					<!-- <h3 class="col-sm-offset-2 col-sm-8 text-center">					
+					Formulario de Registro de funcionarios</h3> -->
+					
+				</div>
+				<input type="hidden" id="idusuario" name="idusuario" value="0">
+				<input type="hidden" id="opcion" name="opcion" value="registrar">
+				<div class="form-group">
+					<label for="nombre" class="col-sm-1 control-label">Nombres</label>
+					<div class="col-sm-3"><input id="nombre" name="nombre" type="text" class="form-control"  autofocus required></div>
+					<label for="apellidos" class="col-sm-1 control-label">Apellidos</label>
+					<div class="col-sm-3"><input id="apellidos" name="apellidos" type="text" class="form-control" required ></div>
+					<label for="apellidos" class="col-sm-1 control-label">Nro. Documento</label>
+					<div class="col-sm-2"><input id="dni" name="dni" type="text" class="form-control" maxlength="10" required></div>				
+				</div>
+				<div class="form-group">
+					<label for="telefono" class="col-sm-1 control-label">Telefono(s)</label>
+					<div class="col-sm-3"><input id="telefono" name="telefono" type="text" class="form-control" required ></div>
+					<label for="email" class="col-sm-1 control-label">Email</label>
+					<div class="col-sm-3"><input id="email" name="email" type="text" class="form-control"required></div>
+                    <label for="nro_ficha" class="col-sm-1 control-label">Nro.Ficha</label>
+					<div class="col-sm-2"><input id="nro_ficha" name="nro_ficha" type="text" class="form-control" required ></div>
+				</div>
+				<div class="form-group">
+					<label for="nro_legajo" class="col-sm-1 control-label">Nro. Legajo</label>
+					<div class="col-sm-3"><input id="nro_legajo" name="nro_legajo" type="text" class="form-control" required ></div>
+					<label for="tipo_vinculo" class="col-sm-1 control-label">Tipo Vinculo</label>
+					<div class="col-sm-3"><select name="tipo_vinculo" id="tipo_vinculo type="text" class="form-control" required>
+						<option value="comisionado">Comisionado</option>
+						<option selected value="funcionario del SENEPA">Funcionario del SENEPA</option>
+						</select>
+					</div>
+			
+                    <label for="fecha_nac" class="col-sm-1 control-label">Fecha Nac.</label>
+					<div class="col-sm-2"><input id="fecha_nac" name="fecha_nac" type="date" class="form-control" required></div> 
+				</div>
+
+				<div class="form-group">
+					<label for="dependencia" class="col-sm-1 control-label">Dependencia</label>
+					<div class="col-sm-3"><input id="dependencia" name="dependencia" type="text" class="form-control" maxlength="100" required></div>
+					<label for="seccion" class="col-sm-1 control-label">Sección/Dpto</label>
+					<div class="col-sm-3"><input id="seccion" name="seccion" type="text" class="form-control" required></div>
+					<label for="estado_civil" class="col-sm-1 control-label">Estado Civil</label>
+					<div class="col-sm-2"><input id="estado_civil" name="estado_civil" type="text" class="form-control" required ></div>
+				</div>
+
+				<div class="form-group">
+					<label for="edad" class="col-sm-1 control-label">Edad</label>
+					<div class="col-sm-3"><input id="edad" name="edad" type="text" class="form-control" required ></div>
+					<label for="nacionalidad" class="col-sm-1 control-label">Nacionalidad</label>
+					<div class="col-sm-3"><input id="nacionalidad" name="nacionalidad" type="text" class="form-control" maxlength="100" required></div>
+					<label for="sexo" class="col-sm-1 control-label">Sexo</label>
+					<div class="col-sm-2"><select name="sexo" id="sexo"  type="text" class="form-control" required>
+						<option selected value="masculino">Masculino</option>
+						<option value="femenino">Femenino</option>
+						</select>
+					</div>
+				</div>
+		
+				<div class="form-group">
+					<label for="direccion" class="col-sm-1 control-label">Dirección</label>
+					<div class="col-sm-3"><input id="direccion" name="direccion" type="text" class="form-control" maxlength="100" required ></div>
+					<label for="ciudad" class="col-sm-1 control-label">Ciudad</label>
+					<div class="col-sm-3"><input id="ciudad" name="ciudad" type="text" class="form-control" required></div>
+					<label for="barrio" class="col-sm-1 control-label">Barrio</label>
+					<div class="col-sm-2"><input id="barrio" name="barrio" type="text" class="form-control" required></div>
+				</div>
+
+
+				<div class="form-group">
+					<label for="grado_academico" class="col-sm-1 control-label">Grado Académico</label>
+					<div class="col-sm-3"><select name="grado_academico" id="sexo"  type="text" class="form-control" required>
+						<option value="Primario">Primario</option>
+						<option value="Secundario">Secundario</option>
+						<option value="Terciario">Terciario/Tecnico</option>
+						<option selected value="Universitario(Concluido)">Universitario(Concluido)</option>
+						<option value="Universitario(En curso)">Universitario(En curso)</option>
+						</select>
+					</div>
+				
+					<label for="profesion" class="col-sm-1 control-label">Profesión</label>
+					<div class="col-sm-3"><input id="profesion" name="profesion" type="text" class="form-control" maxlength="100" required></div>
+					<label for="fecha_ingreso" class="col-sm-1 control-label">Fecha Ingreso</label>
+					<div class="col-sm-2"><input id="fecha_ingreso" name="fecha_ingreso" type="date" class="form-control" required></div>
+					
+				</div>
+
+
+				<div class="form-group">
+					<label for="res_decreto" class="col-sm-1 control-label">Res./Decreto</label>
+					<div class="col-sm-3"><input id="res_decreto" name="res_decreto" type="text" class="form-control" required></div>
+					<label for="horario" class="col-sm-1 control-label">Horario</label>
+					<div class="col-sm-3"><input id="horario" name="horario" type="text" class="form-control"required ></div>
+					<label for="carga_horaria" class="col-sm-1 control-label">Carga Horaria</label>
+					<div class="col-sm-2"><input id="carga_horaria" name="carga_horaria" type="text" class="form-control"required></div>
+				</div>
+
+
+				<div class="form-group">
+				<label for="titulo" class="col-sm-1 control-label">Título<br>Universidad</br>Año</label>
+					<div class="col-sm-3"><textarea placeholder="Ingrese los datos separados por punto y coma"id="titulo" name="titulo" type="text" class="form-control" ></textarea></div>
+					<label for="rubro" class="col-sm-1 control-label">Rubro</label>
+					<div class="col-sm-3"><select name="rubro" id="sexo"  type="text" class="form-control" required>
+						<option selected="Personal Permanente">Personal Permanente</option>
+						<option value="Personal Contratado">Personal Contratado</option>
+						</select>
+					
+					</div>
+					<!-- <div class="form-group">
+					<label class="col-sm-1 control-label">Foto</label>
+					<input type="file" name="imagem_usuario" id="imagem_usuario" />
+					<span id="user_uploaded_image"></span> -->
+					
+				</div>
+
+			
+				
+                 <center>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-8">
+						<input id="" type="submit" class="btn btn-success" value="Guardar">
+						<input id="btn_listar" type="button" class="btn btn-primary" value="Volver a la lista">
+					    <button onClick="window.print()" type="button" class="btn btn-info">Imprimir datos del funcionario</button>
+					</div>
+				</div>
+			</form>
+		</center>
+			<div class="col-sm-offset-2 col-sm-8">
+				<p class="mensaje"></p>
+			</div>
+			
+		</div>
+	</div>
+	<div class="row">
+		<div id="cuadro1" class="col-sm-12 col-md-12 col-lg-12">
+			<div class="col-sm-offset-2 col-sm-8">
+				<h3 class="text-center"> <small class="mensaje"></small></h3>
+			<center>
+				
+				
+				<a class="btn btn-primary"  onclick="agregar_nuevo_usuario()"> Agregar datos </a>
+				<a href="excel.php" class="btn btn-success" role="button">Enviar datos a Excel</a>
+				<a href="logout.php" class="btn btn-danger"  role="button">Salir</a>
+			</center>
+			</br>
+			</div>
+			<div class="table-responsive col-sm-12">		
+				<table id="dt_cliente" class="table table-bordered table-hover" cellspacing="0" width="100%">
+					<thead>
+						<tr>								
+							<th>Nro.Documento</th>
+							<th>Nombre</th>
+							<th>Apellidos</th>
+							<th>Teléfono</th>
+							<th>Email</th>
+							<th>Nro.Ficha</th>
+							<th>Nro.Legajo</th>
+						   <!--  <th>Tipo Vinculo</th> -->
+							 <th>Rubro</th>
+						    <!--<th>Fecha Nac</th> -->
+							<th>Dependencia</th>
+							<th>Dpto/Sección/Unidad</th>
+							<!-- th>Estado Civil</th>
+							<th>Edad</th>
+							<th>Nacionalidad</th>
+							<th>Sexo</th>
+							<th>Dirección</th>
+							<th>Ciudad</th>
+							<th>Barrio</th>
+							<th>Grado Académico</th>
+							<th>Título</th>
+							<th>Profesión</th>
+							<th>Fecha Ingreso</th>
+							<th>Res./Decreto</th> -->
+							<th>Horario</th>
+							
+							
+							<th>Opciones</th>											
+						</tr>
+					</thead>					
+				</table>
+			</div>			
+		</div>		
+	</div>
+	<div>
+		<form id="frmEliminarUsuario" action="" method="POST">
+			<input type="hidden" id="idusuario" name="idusuario" value="">
+			<input type="hidden" id="opcion" name="opcion" value="eliminar">
+			<!-- Modal -->
+			<div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminarLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="modalEliminarLabel">Eliminar datos del funcionario </h4>
+						</div>
+						<div class="modal-body">							
+							¿Está seguro de eliminar datos del funcionario?<strong data-name=""></strong>
+						</div>
+						<div class="modal-footer">
+							<button type="button" id="eliminar-usuario" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Modal -->
+		</form>
+	</div>
+	
+	<script src="js/jquery-1.12.3.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.dataTables.min.js"></script>
+	<script src="js/dataTables.bootstrap.js"></script>
+	<!--botones DataTables-->	
+	<script src="js/dataTables.buttons.min.js"></script>
+	<script src="js/buttons.bootstrap.min.js"></script>
+	<!--Libreria para exportar Excel-->
+	<script src="js/jszip.min.js"></script>
+	<!--Librerias para exportar PDF-->
+	<script src="js/pdfmake.min.js"></script>
+	<script src="js/vfs_fonts.js"></script>
+	<!--Librerias para botones de exportación-->
+	<script src="js/buttons.html5.min.js"></script>
+
+	<script>		
+		$(document).on("ready", function(){
+			listar();
+			guardar();
+			eliminar();
+		});
+
+		$("#btn_listar").on("click", function(){
+			listar();
+		});
+
+		var guardar = function(){
+			$("form").on("submit", function(e){
+				e.preventDefault();
+				var frm = $(this).serialize();
+				$.ajax({
+					method: "POST",
+					url: "guardar.php",
+					data: frm
+				}).done( function( info ){
+					console.log( info );
+					var json_info = JSON.parse( info );
+					mostrar_mensaje( json_info );
+					limpiar_datos();
+					listar();
+				});
+			});
+		}
+
+		var eliminar = function(){
+			$("#eliminar-usuario").on("click", function(){
+				var idusuario = $("#frmEliminarUsuario #idusuario").val(),
+					opcion = $("#frmEliminarUsuario #opcion").val();
+				$.ajax({
+					method:"POST",
+					url: "guardar.php",
+					data: {"idusuario": idusuario, "opcion": opcion}
+				}).done( function( info ){
+					var json_info = JSON.parse( info );
+					mostrar_mensaje( json_info );
+					limpiar_datos();
+					listar();
+				});
+			});
+		}
+
+		var mostrar_mensaje = function( informacion ){
+			var texto = "", color = "";
+			if( informacion.respuesta == "BIEN" ){
+					texto = "<strong>Operación exitosa!</strong> Se han guardado los cambios correctamente.";
+					color = "#379911";
+			}else if( informacion.respuesta == "ERROR"){
+					texto = "<strong>Error</strong>, no se ejecutó la consulta.";
+					color = "#C9302C";
+			}else if( informacion.respuesta == "EXISTE" ){
+					texto = "<strong>Información!</strong> el usuario ya existe.";
+					color = "#5b94c5";
+			}else if( informacion.respuesta == "VACIO" ){
+					texto = "<strong>Advertencia!</strong> debe llenar todos los campos solicitados.";
+					color = "#ddb11d";
+			}else if( informacion.respuesta == "OPCION_VACIA" ){
+					texto = "<strong>Advertencia!</strong> la opción no existe o esta vacia, recargar la página.";
+					color = "#ddb11d";
+			}
+
+			$(".mensaje").html( texto ).css({"color": color });
+			$(".mensaje").fadeOut(5000, function(){
+					$(this).html("");
+					$(this).fadeIn(3000);
+			});			
+		}
+
+		var limpiar_datos = function(){
+			$("#opcion").val("registrar");
+			$("#idusuario").val("");
+			$("#dni").val("");
+			$("#nombre").val("").focus();
+			$("#apellidos").val("");
+			$("#telefono").val("");
+			$("#email").val("");
+			$("#nro_ficha").val("");
+			$("#nro_legajo").val("");
+			$("#tipo_vinculo").val("");
+			$("#rubro").val("");
+			$("#fecha_nac").val("");
+			$("#dependencia").val("");
+			$("#seccion").val("");
+			$("#estado_civil").val("");
+			$("#edad").val("");
+			$("#nacionalidad").val("");
+			$("#sexo").val("");
+			$("#direccion").val("");
+			$("#ciudad").val("");
+			$("#barrio").val("");
+			$("#grado_academico").val("");
+			$("#titulo").val("");
+		    $("#universidad").val("");
+			$("#profesion").val("");
+		    $("#fecha_ingreso").val("");
+			$("#res_decreto").val("");
+			$("#horario").val("");
+			$("#carga_horaria").val(""); 
+		}
+
+		var listar = function(){
+				$("#cuadro2").slideUp("slow");
+				$("#cuadro1").slideDown("slow");
+			var table = $("#dt_cliente").DataTable({
+				//"processing": true,
+				//"serverSide": true,
+				"destroy":true,
+				"ajax":{
+					"method":"POST",
+					"url": "listar.php"
+				},
+				"columns":[
+				    {"data":"dni"},
+					{"data":"nombre"},
+					{"data":"apellidos"},
+					{"data":"telefono"},
+					{"data":"email"},
+					{"data":"nro_ficha"},
+					{"data":"nro_legajo"},
+					//{"data":"tipo_vinculo"},
+					{"data":"rubro"},
+				/* 	{"data":"fecha_nac"}, */
+					{"data":"dependencia"},
+					{"data":"seccion"},
+					{"data":"horario"},
+					{"defaultContent": "<button type='button' class='editar btn btn-warning'><i class='fa fa-eye'></i></button>	<button type='button' class='eliminar btn btn-danger' data-toggle='modal' data-target='#modalEliminar' ><i class='fa fa-trash-o'></i></button>"}	
+				],
+				"language": idioma_espanol,
+				"dom": "<'row'<'form-inline' <'col-sm-offset-5'B>>>"
+					 +"<'row' <'form-inline' <'col-sm-1'f>>>"
+					 +"<rt>"
+					 +"<'row'<'form-inline'"
+					 +" <'col-sm-6 col-md-6 col-lg-6'l>"
+					 +"<'col-sm-6 col-md-6 col-lg-6'p>>>",
+				"buttons":[
+					/*{
+						"text": "<i class='fa fa-user-plus'></i>",
+						"titleAttr": "Agregar funcionario",
+						"className": "btn btn-success",
+						"action": function(){
+							agregar_nuevo_usuario();
+						}
+					},*/
+				
+					
+					/*{
+		                extend:    'excelHtml5', */
+		                //text:      '<i class="fa fa-file-excel-o"></i>',
+		               // titleAttr: '',
+						//"action": function(){
+						//	imprimirDatos();
+						//}
+		        // },*/
+		         /* {
+		         	extend: 'csvHtml5',
+		         	text: '<i class="fa fa-file-text-o"></i>',
+		         	titleAttr: 'CSV'
+		         }, */
+		        /*  {
+		                extend:    'pdfHtml5',
+		                text:      '<i class="fa fa-file-pdf-o"></i>',
+		                titleAttr: 'PDF'
+		         } */
+				]
+			});
+
+			obtener_data_editar("#dt_cliente tbody", table);
+			obtener_id_eliminar("#dt_cliente tbody", table);
+		}
+
+         var imprimirDatos=function (){
+			window.print();
+		 }
+
+		var agregar_nuevo_usuario = function(){
+			limpiar_datos();
+			$("#cuadro2").slideDown("slow");
+			$("#cuadro1").slideUp("slow");
+		}
+		
+
+		var obtener_data_editar = function(tbody, table){       // se obtienen los datos para editar
+			$(tbody).on("click", "button.editar", function(){
+				var data = table.row( $(this).parents("tr") ).data();
+				var idusuario = $("#idusuario").val( data.idusuario ),
+				        dni = $("#dni").val( data.dni ),
+						nombre = $("#nombre").val( data.nombre ),
+						apellidos = $("#apellidos").val( data.apellidos ),
+						telefono = $("#telefono").val( data.telefono),
+						email = $("#email").val( data.email),
+						nro_ficha = $("#nro_ficha").val( data.nro_ficha),
+						nro_legajo = $("#nro_legajo").val( data.nro_legajo)
+						tipo_vinculo = $("#tipo_vinculo").val( data.tipo_vinculo),
+						rubro = $("#rubro").val( data.rubro),
+						fecha_nac= $("#fecha_nac").val( data.fecha_nac),
+						dependencia= $("#dependencia").val( data.dependencia),
+						seccion= $("#seccion").val( data.seccion),
+						estado_civil= $("#estado_civil").val( data.estado_civil),
+						edad= $("#edad").val( data.edad),
+						nacionalidad= $("#nacionalidad").val( data.nacionalidad),
+						sexo= $("#sexo").val( data.sexo),
+						direccion= $("#direccion").val( data.direccion),
+						ciudad= $("#ciudad").val( data.ciudad),
+						barrio= $("#barrio").val( data.barrio),
+						grado_academico= $("#grado_academico").val( data.grado_academico),
+						titulo= $("#titulo").val( data.titulo),
+						universidad= $("#universidad").val( data.universidad),
+						profesion= $("#profesion").val( data.profesion),
+						res_decreto= $("#res_decreto").val( data.res_decreto),
+						fecha_ingreso= $("#fecha_ingreso").val( data.fecha_ingreso),
+						horaria= $("#horario").val( data.horario),
+						carga_horaria= $("#carga_horaria").val( data.carga_horaria),
+	
+						opcion = $("#opcion").val("modificar");
+
+						$("#cuadro2").slideDown("slow");
+						$("#cuadro1").slideUp("slow");
+			});
+		}
+
+		var obtener_id_eliminar = function(tbody, table){
+			$(tbody).on("click", "button.eliminar", function(){
+				var data = table.row( $(this).parents("tr") ).data();
+				var idusuario = $("#frmEliminarUsuario #idusuario").val( data.idusuario );
+			});
+		}
+
+		var idioma_espanol = {
+		    "sProcessing":     "Procesando...",
+		    "sLengthMenu":     "Mostrar _MENU_ registros",
+		    "sZeroRecords":    "No se encontraron resultados",
+		    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+		    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+		    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+		    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+		    "sInfoPostFix":    "",
+		    "sSearch":         "Buscar:",
+		    "sUrl":            "",
+		    "sInfoThousands":  ",",
+		    "sLoadingRecords": "Cargando...",
+		    "oPaginate": {
+		        "sFirst":    "Primero",
+		        "sLast":     "Último",
+		        "sNext":     "Siguiente",
+		        "sPrevious": "Anterior"
+		    },
+		    "oAria": {
+		        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+		        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+		    }
+		}
+		
+
+	</script>
+	
+</body>
+
+</html>
+<center>
+	</br>
+</br>
+</br></br></br></br>
+<a href="backup.php" class="btn btn-warning" role="button">Realizar backup de la db</a>
+	<footer>
+		
+	</br>
+		Dirección de Recursos Humanos - SENEPA 2022</footer>
+
+	</center>
+
+
+	
