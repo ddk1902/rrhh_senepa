@@ -1,0 +1,29 @@
+
+<table border=1><tr><th colspan=26 font-color=#E9967A></th></tr><tr>
+<th  style="background-color:#F6DDCC"; font-size:14pt;">NroDoc</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Nombres</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Apellidos</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Telefono</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Email</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Nro.Ficha</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Nro.Legajo</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Tipo de Vinculo</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Rubro</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">FechaNacimiento</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Dependencia</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Seccion</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Estado Civil</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Edad</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Nacionalidad</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Sexo</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Direccin</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Ciudad</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Barrio</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">GradoAcad.</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Titulo</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Profesion</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Fecha Ingreso</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Resolucion/Decreto</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Horario</th>
+<th style="background-color:#F6DDCC"; font-size:14pt;">Carga Horaria</th>
+</tr><tr><td>4348718</td><td>Diego Daniel</td><td>Gomez</td><td>0994358724</td><td>gomezdiego1902@gmail.com</td><td>71</td><td>41</td><td>Funcionario del SENEPA</td><td>Personal Permanente</td><td>1987-01-11</td><td>Oficina Central</td><td>Unidad de Proyectos, Convenios e Investigacion</td><td>Soltero</td><td>35</td><td>Paraguaya</td><td>masculino</td><td>Gral Aquino 1167</td><td>Asuncion</td><td>Ciudad Nueva</td><td>Universitario(En curso)</td><td>ingenieria en Ciencias Informaticas-Universidad Autonoma de Asuncion (En curso)</td><td>Estudiante</td><td>2009-08-11</td><td>5555</td><td>07:00 a 13:00</td><td>132 horas</td></tr><tr><td>784647</td><td>Carlos Adrian</td><td>Guido Rivas</td><td>0981665283</td><td>carloguido@hotmail.com</td><td>171</td><td>222</td><td>funcionario del SENEPA</td><td>Personal Permanente</td><td>1984-05-17</td><td> Oficina Central</td><td>Unidad de Proyectos, Convenios e Investigacion</td><td>Casado</td><td>58</td><td>Paraguaya</td><td>masculino</td><td>Nicolas Avellaneda Nro 61 casi Fernando del Pinedo</td><td>San Lorenzo</td><td>San Roque</td><td>Primario</td><td>Licenciatura en Administracion de Empresas</td><td>Jefe de Unidad</td><td>2022-07-08</td><td>44444</td><td>07:00 a 13:00 horas</td><td>132 horas</td></tr><tr><td>4009940</td><td>Leticia Mariel</td><td>Roa Ayala</td><td>0981903587</td><td>letiroa.py@gmail.com</td><td>120</td><td>178</td><td>funcionario del SENEPA</td><td>Personal Permanente</td><td>1983-12-06</td><td>Oficina Central</td><td>Unidad de Proyectos, Convenios e Investigacion</td><td>Soltera</td><td>39</td><td>Paraguaya</td><td>femenino</td><td>Sptvo Luque?o casi Quebec</td><td>Luque</td><td>3er Barrio</td><td>Universitario(Concluido)</td><td>Licenciatura en Ciencias-Menci?n Biologia  Universidad Nacional de Asuncion</td><td>Biologa</td><td>2008-02-26</td><td>789949449</td><td>07:00 a 13:00</td><td>132 horas</td></tr></table>
